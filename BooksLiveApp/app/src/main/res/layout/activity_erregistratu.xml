@@ -20,10 +20,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textErregistroa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/Erregistroa"
+            android:textColor="#0D4B0F"
             android:textSize="34sp" />
 
         <Space
@@ -31,89 +32,89 @@
             android:layout_height="84dp" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/editTextIzAbiz"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="@string/izena_abizena" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
         <EditText
-            android:id="@+id/editTextText5"
+            android:id="@+id/editTextEmail"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:inputType="textEmailAddress"
+            android:text="@string/email" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
         <EditText
-            android:id="@+id/editTextText6"
+            android:id="@+id/editTextErabiltzaileaE"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="@string/Erabiltzailea" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
         <EditText
-            android:id="@+id/editTextText7"
+            android:id="@+id/editTextPassword"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="text"
-            android:text="Name" />
+            android:inputType="textPassword"
+            android:text="@string/Pasahitza" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/editTextHelbidea"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="@string/helbidea" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/editTextJaiotzaData"
             android:layout_width="299dp"
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:text="Name" />
+            android:text="@string/Jaiotza_data" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="84dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonErregistratu"
             android:layout_width="299dp"
             android:layout_height="50dp"
             android:backgroundTint="#43A047"
-            android:text="Button" />
+            android:text="@string/Sartu" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

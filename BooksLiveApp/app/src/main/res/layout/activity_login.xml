@@ -11,7 +11,7 @@
     tools:context=".activitys.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#094709"
@@ -22,12 +22,12 @@
         android:layout_height="14dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/login"
         android:textColor="#43A047"
-        android:textSize="24sp" />
+        android:textSize="48sp" />
 
     <Space
         android:layout_width="match_parent"
@@ -42,47 +42,48 @@
         android:layout_height="12dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editTextErabiltzailea"
         android:layout_width="299dp"
         android:layout_height="42dp"
         android:background="@color/white"
         android:ems="10"
         android:inputType="text"
-        android:text="Name" />
+        android:text="@string/Erabiltzailea" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="28dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextPassword"
         android:layout_width="299dp"
         android:layout_height="42dp"
         android:background="@color/white"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:text="@string/Pasahitza" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="14dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogin"
         android:layout_width="299dp"
         android:layout_height="50dp"
         android:backgroundTint="#43A047"
-        android:text="Button" />
+        android:text="@string/Sartu" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="14dp" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="158dp"
+        android:id="@+id/textErregistroaLink"
+        android:layout_width="139dp"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="TextView"
+        android:text="@string/Erregistroa"
         android:textColor="#D3FFD5"
         android:textSize="24sp" />
 
@@ -92,10 +93,10 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="160dp"
-        android:layout_height="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
-        android:text="TextView"
+        android:text="@string/Sartu_erregistratu_gabe"
         android:textColor="#D3FFD5"
         android:textSize="24sp" />
 

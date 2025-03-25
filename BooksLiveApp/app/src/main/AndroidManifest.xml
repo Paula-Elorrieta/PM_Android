@@ -13,10 +13,10 @@
         android:theme="@style/Theme.BooksLiveApp"
         tools:targetApi="31">
         <activity
-            android:name=".activitys.ErregistratuActivity"
+            android:name=".activitys.PrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".activitys.LoginActivity"
+            android:name=".activitys.ErregistratuActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">BooksLiveApp</string>
+    <string name="login">Login</string>
+    <string name="Erregistroa">Erregistroa</string>
+    <string name="email">Email</string>
+    <string name="Pasahitza">Pasahitza</string>
+    <string name="Erabiltzailea">Erabiltzailea</string>
+    <string name="Sartu_erregistratu_gabe">Sartu erregistratu gabe</string>
+    <string name="Sartu">Sartu</string>
+    <string name="izena_abizena">Izena Abizena</string>
+    <string name="helbidea">Helbidea</string>
+    <string name="Jaiotza_data">Jaiotza data</string>
+    <string name="itzuli">Itzuli</string>
 
 </resources>
