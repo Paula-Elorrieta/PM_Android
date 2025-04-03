@@ -21,6 +21,10 @@ public class User {
         this.helbidea = helbidea;
     }
 
+    public User() {
+
+    }
+
     public int getUserId() {
         return userId;
     }
