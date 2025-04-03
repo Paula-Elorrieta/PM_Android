@@ -1,6 +1,8 @@
 package com.example.booksliveapp.activitys;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +20,13 @@ public class ErregistratuActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_erregistratu);
 
+        Button erregistratuButton = findViewById(R.id.buttonErregistratu);
 
+        erregistratuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PrincipalActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
