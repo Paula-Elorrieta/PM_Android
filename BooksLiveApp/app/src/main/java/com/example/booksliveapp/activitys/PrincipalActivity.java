@@ -2,8 +2,6 @@ package com.example.booksliveapp.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.Button;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,12 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.booksliveapp.LibrosAdapter;
-import com.example.booksliveapp.LoginActivity;
 import com.example.booksliveapp.R;
-import com.example.booksliveapp.modelo.Liburua;
 
 import java.util.ArrayList;
 

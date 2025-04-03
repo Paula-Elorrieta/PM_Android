@@ -22,11 +22,7 @@
         android:layout_height="14dp" />
 
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/LoginTitulua"
-=======
         android:id="@+id/textLogin"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
@@ -46,55 +42,33 @@
         android:layout_height="12dp" />
 
     <EditText
-<<<<<<< HEAD
-        android:id="@+id/ErabilztaileaL"
-=======
         android:id="@+id/editTextErabiltzailea"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_width="299dp"
         android:layout_height="42dp"
         android:background="@color/white"
         android:ems="10"
-<<<<<<< HEAD
         android:hint="@string/Erabiltzailea"
         android:inputType="text" />
-=======
-        android:inputType="text"
-        android:text="@string/Erabiltzailea" />
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="28dp" />
 
     <EditText
-<<<<<<< HEAD
-        android:id="@+id/PasswordL"
-=======
         android:id="@+id/editTextPassword"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_width="299dp"
         android:layout_height="42dp"
         android:background="@color/white"
         android:ems="10"
-<<<<<<< HEAD
         android:hint="@string/Pasahitza"
         android:inputType="textPassword" />
-=======
-        android:inputType="textPassword"
-        android:text="@string/Pasahitza" />
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="14dp" />
 
     <Button
-<<<<<<< HEAD
-        android:id="@+id/SartuL"
-=======
         android:id="@+id/buttonLogin"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_width="299dp"
         android:layout_height="50dp"
         android:backgroundTint="#43A047"
@@ -105,13 +79,8 @@
         android:layout_height="14dp" />
 
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/ErregistratuLink"
-        android:layout_width="158dp"
-=======
         android:id="@+id/textErregistroaLink"
         android:layout_width="139dp"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="@string/Erregistroa"
@@ -123,11 +92,7 @@
         android:layout_height="12dp" />
 
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/Erregistratu_gabe"
-=======
         android:id="@+id/textView3"
->>>>>>> ff846797339835609f9f97b6edbd91aaafdf182f
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"

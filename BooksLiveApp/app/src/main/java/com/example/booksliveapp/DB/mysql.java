@@ -2,6 +2,7 @@ package com.example.booksliveapp.DB;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import com.example.booksliveapp.modelo.User;
@@ -15,8 +16,8 @@ import java.sql.SQLException;
 public class mysql {
     private static final String URL = "jdbc:mysql://localhost:3307/db_bookslive";
     private static final String USER = "user";
-    private static final String PASSWORD = "12345";
-    private static SharedPreferences.Editor loginPrefsEditor;
+    private static final String PASSWORD = "";
+    private static Context context;
 
 
     public static boolean ErabiltzaileaKonprobatu(String erabiltzailea, String pasahitza) throws SQLException {
@@ -42,7 +43,7 @@ public class mysql {
 
                 if (user != null) {
                     exists = true;
-                    SharedPreferences preferences = getSharedPreferences("User", MODE_PRIVATE);
+                    SharedPreferences preferences = context.getSharedPreferences("User", MODE_PRIVATE);
 
                     SharedPreferences.Editor loginPrefsEditor = preferences.edit();
                     loginPrefsEditor.putString("erabiltzailea", user.getErabiltzailea());
@@ -53,7 +54,7 @@ public class mysql {
 
             }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             Log.e("MYSQL", "Errorea: " + e.getMessage(), e);
         }
 
@@ -77,8 +78,9 @@ public class mysql {
                 exists = true;
                 Log.d("MYSQL", "Erabiltzailea erregistratu da: " + erabiltzailea);
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             Log.e("MYSQL", "Errorea: " + e.getMessage(), e);
         }
         return exists;
     }
+}
