@@ -40,5 +40,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("mysql:mysql-connector-java:8.0.33")
+    implementation("mysql:mysql-connector-java:5.1.49")
+    implementation ("org.osmdroid:osmdroid-android:6.1.15")
+    // Dependencia principal de Parceler
+    implementation("org.parceler:parceler-api:1.1.13")
+    // Procesador de anotaciones para Parceler
+    annotationProcessor("org.parceler:parceler:1.1.13")
 }

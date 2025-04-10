@@ -1,103 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondomovil"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".activitys.LoginActivity">
-
-    <ImageView
-        android:id="@+id/imageLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#094709"
-        android:src="@drawable/logo" />
-
-    <Space
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="14dp" />
+        android:layout_height="match_parent"
+        android:background="@drawable/fondomovil"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".activitys.LoginActivity">
 
-    <TextView
-        android:id="@+id/textLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textColor="#43A047"
-        android:textSize="48sp" />
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#094709"
+            android:src="@drawable/logo" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="22dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="14dp" />
+        <TextView
+            android:id="@+id/textLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:textColor="#43A047"
+            android:textSize="48sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
 
-    <EditText
-        android:id="@+id/editTextErabiltzailea"
-        android:layout_width="299dp"
-        android:layout_height="42dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/Erabiltzailea"
-        android:inputType="text" />
+        <EditText
+            android:id="@+id/editTextErabiltzailea"
+            android:layout_width="299dp"
+            android:layout_height="42dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:text="@string/Erabiltzailea" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="28dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="28dp" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="299dp"
-        android:layout_height="42dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/Pasahitza"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="299dp"
+            android:layout_height="42dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="@string/Pasahitza" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="14dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
 
-    <Button
-        android:id="@+id/buttonLogin"
-        android:layout_width="299dp"
-        android:layout_height="50dp"
-        android:backgroundTint="#43A047"
-        android:text="@string/Sartu" />
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="299dp"
+            android:layout_height="50dp"
+            android:backgroundTint="#43A047"
+            android:text="@string/Sartu" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="14dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="14dp" />
 
-    <TextView
-        android:id="@+id/textErregistroaLink"
-        android:layout_width="139dp"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="@string/Erregistroa"
-        android:textColor="#D3FFD5"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textErregistroaLink"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/Erregistroa"
+            android:textColor="#D3FFD5"
+            android:textSize="24sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="12dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:text="@string/Sartu_erregistratu_gabe"
-        android:textColor="#D3FFD5"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textErregistratuGabeLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="@string/Sartu_erregistratu_gabe"
+            android:textColor="#D3FFD5"
+            android:textSize="24sp" />
 
-</LinearLayout>
+    </LinearLayout>

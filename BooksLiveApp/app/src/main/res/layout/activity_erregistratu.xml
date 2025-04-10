@@ -15,9 +15,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textErregistroa"
@@ -37,8 +38,8 @@
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="text"
-            android:text="@string/izena_abizena" />
+            android:hint="@string/izena_abizena"
+            android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
@@ -50,8 +51,8 @@
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:text="@string/email" />
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
 
         <Space
             android:layout_width="match_parent"
@@ -63,8 +64,8 @@
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="text"
-            android:text="@string/Erabiltzailea" />
+            android:hint="@string/Erabiltzailea"
+            android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
@@ -76,8 +77,8 @@
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="@string/Pasahitza" />
+            android:hint="@string/Pasahitza"
+            android:inputType="textPassword" />
 
         <Space
             android:layout_width="match_parent"
@@ -89,21 +90,29 @@
             android:layout_height="42dp"
             android:background="@color/white"
             android:ems="10"
-            android:inputType="text"
-            android:text="@string/helbidea" />
+            android:hint="@string/helbidea"
+            android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="21dp" />
 
-        <EditText
-            android:id="@+id/editTextJaiotzaData"
+        <TextView
+            android:id="@+id/textViewDate"
             android:layout_width="299dp"
-            android:layout_height="42dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:inputType="text"
-            android:text="@string/Jaiotza_data" />
+            android:layout_height="43dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="visible"
+            tools:text="@string/Jaiotza_data" />
+
+        <Button
+            android:id="@+id/buttonDatePicker"
+            android:layout_width="299dp"
+            android:layout_height="43dp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            app:shapeAppearance="@style/MaterialAlertDialog.Material3" />
 
         <Space
             android:layout_width="match_parent"
