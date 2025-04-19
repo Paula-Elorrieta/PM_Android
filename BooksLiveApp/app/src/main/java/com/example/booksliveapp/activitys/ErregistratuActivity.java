@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,13 +14,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.booksliveapp.DB.mysql;
 import com.example.booksliveapp.R;
 
 import java.sql.Date;
 import java.util.Calendar;
 
 public class ErregistratuActivity extends AppCompatActivity {
-
+    Date date;
+    String fechaSeleccionada;
+    boolean exists = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,18 @@ public class ErregistratuActivity extends AppCompatActivity {
         Button erregistratuButton = findViewById(R.id.buttonErregistratu);
         Button buttonDatePicker = findViewById(R.id.buttonDatePicker);
         TextView textViewDate = findViewById(R.id.textViewDate);
+        EditText textIzena = findViewById(R.id.editTextIzAbiz);
+        String izenAbizen = textIzena.toString();
+        EditText textEmail = findViewById(R.id.editTextEmail);
+        String Email = textEmail.toString();
+        EditText textErabiltzailea = findViewById(R.id.editTextErabiltzaileaE);
+        String Erabiltzailea = textErabiltzailea.toString();
+        EditText textpasahitza = findViewById(R.id.editTextPassword);
+        String pasahitza = textpasahitza.toString();
+        EditText texthelbidea = findViewById(R.id.editTextHelbidea);
+        String helbidea = texthelbidea.toString();
+
+
 
 
         buttonDatePicker.setOnClickListener(v -> {
@@ -40,8 +57,8 @@ public class ErregistratuActivity extends AppCompatActivity {
                     ErregistratuActivity.this,
                     (view, selectedYear, selectedMonth, dayOfMonth) -> {
                         // Format and set the selected date
-                        String fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + dayOfMonth;
-                        Date date = Date.valueOf(fechaSeleccionada);
+                         fechaSeleccionada = selectedYear + "-" + (selectedMonth + 1) + "-" + dayOfMonth;
+                         date = Date.valueOf(fechaSeleccionada);
                         textViewDate.setText(date.toString());
                     },
                     year, month, day
@@ -50,10 +67,39 @@ public class ErregistratuActivity extends AppCompatActivity {
         });
 
 
+
+
         erregistratuButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, PrincipalActivity.class);
-            startActivity(intent);
-            finish();
+            if(izenAbizen.isEmpty()){
+                textIzena.setError("Idatzi zure izena eta abizena");
+            }else if (Email.isEmpty()){
+                textEmail.setError("Idatzi sure Email");
+            }else if(Erabiltzailea.isEmpty()){
+                textErabiltzailea.setError("Idatzi erabiltzailea");
+            }else if(pasahitza.isEmpty()){
+                textpasahitza.setError("Idatzi pasahitza");
+            }else if(fechaSeleccionada.isEmpty()){
+               textViewDate.setError("Idatzi jaiotza-data");
+            }else if (helbidea.isEmpty()){
+                texthelbidea.setError("Idatzi helbidea");
+            }
+
+
+            mysql.ErabiltzaileaSortu(izenAbizen,Erabiltzailea,Email,pasahitza,helbidea,date,this,new mysql.Callback() {
+                @Override
+                public void onResult(boolean exists) {
+                    ErregistratuActivity.this.exists = exists;
+                    if (exists) {
+                        Toast.makeText(ErregistratuActivity.this, "Erabilztailea erregistratuta dago", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(ErregistratuActivity.this, PrincipalActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            });
+
+
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
