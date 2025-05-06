@@ -3,6 +3,8 @@ package com.example.booksliveapp.activitys;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
@@ -10,10 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.booksliveapp.DB.mysql;
 import com.example.booksliveapp.LibrosAdapter;
 import com.example.booksliveapp.R;
+import com.example.booksliveapp.modelo.Liburua;
 
+import java.security.Principal;
 import java.util.ArrayList;
 
 public class PrincipalActivity extends AppCompatActivity implements LibrosAdapter.OnItemClickListener {
@@ -34,14 +42,19 @@ public class PrincipalActivity extends AppCompatActivity implements LibrosAdapte
 
         ArrayList<String> liburuak = new ArrayList<>();
 
-        // Datuak prestatu
-//        liburuak.add(new Liburua(1, "Objektu orientatutako programazio lengoaia, erabilera anitza eta erraza.", "Librea", "fiktizoa", 2.09,""));
-//
-//        // Configurar RecyclerView
-//        RecyclerView recyclerView = findViewById(R.id.RecyclerBistaratu);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        adapterList = new ElementuaAdapter(liburuak, (LibrosAdapter.OnItemClickListener) this);
-//        recyclerView.setAdapter(adapterList);
+        RecyclerView recyclerView = findViewById(R.id.RecyclerBistaratu);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 columnas
+        mysql.LiburuakAtera(this, new LiburuaCallback() {
+            @Override
+            public void onLiburuaLoaded(ArrayList<Liburua> liburuak) {
+                for (Liburua libro : liburuak) {
+                    liburuak.add(libro);
+                }
+
+                LibrosAdapter adapter = new LibrosAdapter(liburuak, PrincipalActivity.this);
+                recyclerView.setAdapter(adapter);
+            }
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbarMenu);
         setSupportActionBar(toolbar);
@@ -54,9 +67,16 @@ public class PrincipalActivity extends AppCompatActivity implements LibrosAdapte
         });
     }
 
-    @Override
-    public void onItemClick(ArrayList<String> liburuak) {
 
+    @Override
+    public void onItemClick(String item) {
+        // Handle item click
+//        Intent intent = new Intent(this, LiburuaActivity.class);
+//        intent.putExtra("liburua", item);
+//        startActivity(intent);
     }
 
+    public interface LiburuaCallback {
+        void onLiburuaLoaded(ArrayList<Liburua> liburuak);
+    }
 }

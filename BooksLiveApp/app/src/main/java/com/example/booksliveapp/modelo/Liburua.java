@@ -19,6 +19,10 @@ public class Liburua {
         this.user = user;
     }
 
+    public Liburua() {
+        // Constructor por defecto
+    }
+
     public int getLiburuId() {
         return liburuId;
     }

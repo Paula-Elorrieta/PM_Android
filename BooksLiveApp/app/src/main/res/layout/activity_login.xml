@@ -33,27 +33,27 @@
             android:layout_width="match_parent"
             android:layout_height="14dp" />
 
-        <EditText
-            android:id="@+id/editTextErabiltzailea"
-            android:layout_width="299dp"
-            android:layout_height="42dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:inputType="text"
-            android:text="@string/Erabiltzailea" />
+    <EditText
+        android:id="@+id/editTextErabiltzailea"
+        android:layout_width="299dp"
+        android:layout_height="42dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/Erabiltzailea"
+        android:inputType="text" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="28dp" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="299dp"
-            android:layout_height="42dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:text="@string/Pasahitza" />
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="299dp"
+        android:layout_height="42dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/Pasahitza"
+        android:inputType="textPassword" />
 
         <Space
             android:layout_width="match_parent"

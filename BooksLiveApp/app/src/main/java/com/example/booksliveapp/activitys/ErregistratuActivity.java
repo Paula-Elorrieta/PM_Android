@@ -34,15 +34,10 @@ public class ErregistratuActivity extends AppCompatActivity {
         Button buttonDatePicker = findViewById(R.id.buttonDatePicker);
         TextView textViewDate = findViewById(R.id.textViewDate);
         EditText textIzena = findViewById(R.id.editTextIzAbiz);
-        String izenAbizen = textIzena.toString();
         EditText textEmail = findViewById(R.id.editTextEmail);
-        String Email = textEmail.toString();
         EditText textErabiltzailea = findViewById(R.id.editTextErabiltzaileaE);
-        String Erabiltzailea = textErabiltzailea.toString();
         EditText textpasahitza = findViewById(R.id.editTextPassword);
-        String pasahitza = textpasahitza.toString();
         EditText texthelbidea = findViewById(R.id.editTextHelbidea);
-        String helbidea = texthelbidea.toString();
 
 
 
@@ -70,34 +65,48 @@ public class ErregistratuActivity extends AppCompatActivity {
 
 
         erregistratuButton.setOnClickListener(v -> {
-            if(izenAbizen.isEmpty()){
+            String izenAbizen = textIzena.getText().toString();
+            String Email = textEmail.getText().toString();
+            String Erabiltzailea = textErabiltzailea.getText().toString();
+            String pasahitza = textpasahitza.getText().toString();
+            String helbidea = texthelbidea.getText().toString();
+
+            if(textIzena.toString().isEmpty()){
                 textIzena.setError("Idatzi zure izena eta abizena");
-            }else if (Email.isEmpty()){
+                return;
+            }else if (textEmail.toString().isEmpty()){
                 textEmail.setError("Idatzi sure Email");
-            }else if(Erabiltzailea.isEmpty()){
+                return;
+            }else if(textErabiltzailea.toString().isEmpty()){
                 textErabiltzailea.setError("Idatzi erabiltzailea");
-            }else if(pasahitza.isEmpty()){
+                return;
+            }else if(textpasahitza.toString().isEmpty()){
                 textpasahitza.setError("Idatzi pasahitza");
-            }else if(fechaSeleccionada.isEmpty()){
+                return;
+            }else if(textViewDate.getText().toString().isEmpty()){
                textViewDate.setError("Idatzi jaiotza-data");
-            }else if (helbidea.isEmpty()){
+               return;
+            }else if (texthelbidea.toString().isEmpty()){
                 texthelbidea.setError("Idatzi helbidea");
-            }
+                return;
+            }else {
 
 
-            mysql.ErabiltzaileaSortu(izenAbizen,Erabiltzailea,Email,pasahitza,helbidea,date,this,new mysql.Callback() {
-                @Override
-                public void onResult(boolean exists) {
-                    ErregistratuActivity.this.exists = exists;
-                    if (exists) {
-                        Toast.makeText(ErregistratuActivity.this, "Erabilztailea erregistratuta dago", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Intent intent = new Intent(ErregistratuActivity.this, PrincipalActivity.class);
-                        startActivity(intent);
-                        finish();
+                mysql.ErabiltzaileaSortu(izenAbizen, Erabiltzailea, Email, pasahitza, helbidea, date, this, new mysql.Callback() {
+                    @Override
+                    public void onResult(boolean exists) {
+                        ErregistratuActivity.this.exists = exists;
+                        if (exists) {
+                            Toast.makeText(ErregistratuActivity.this, "Erabiltzailea erregistratuta dago", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ErregistratuActivity.this, "Erabiltzailea sortu da", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ErregistratuActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
-                }
-            });
+                });
+            }
 
 
         });

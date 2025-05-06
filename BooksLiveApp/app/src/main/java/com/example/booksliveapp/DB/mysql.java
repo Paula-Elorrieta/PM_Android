@@ -3,11 +3,11 @@ package com.example.booksliveapp.DB;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.example.booksliveapp.activitys.LoginActivity;
+import com.example.booksliveapp.activitys.PrincipalActivity;
+import com.example.booksliveapp.modelo.Liburua;
 import com.example.booksliveapp.modelo.User;
 
 import java.sql.Connection;
@@ -15,10 +15,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class mysql {
-    private static final String URL = "jdbc:mysql://192.168.1.145:3307/db_bookslive";
+    private static final String URL = "jdbc:mysql://192.168.1.134:3307/db_bookslive";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -122,6 +123,94 @@ public class mysql {
                 });
             }
         }).start();
+    }
+
+    public static void LiburuaSortu(String liburuId, String tituloa, String idazlea, String generoa, double prezioa, String egoera, int userId, final Activity activity) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String sql = "INSERT INTO liburua (liburu_id, tituloa, idazlea, generoa, prezioa, egoera, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                     PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                    preparedStatement.setString(1, liburuId);
+                    preparedStatement.setString(2, tituloa);
+                    preparedStatement.setString(3, idazlea);
+                    preparedStatement.setString(4, generoa);
+                    preparedStatement.setDouble(5, prezioa);
+                    preparedStatement.setString(6, egoera);
+                    preparedStatement.setInt(7, userId);
+
+                    int rowsInserted = preparedStatement.executeUpdate();
+                    if (rowsInserted > 0) {
+                        Log.d("MYSQL", "Liburua sortu da: " + tituloa);
+                    }
+                } catch (SQLException e) {
+                    Log.e("MYSQL", "Errorea: " + e.getMessage(), e);
+                }
+            }
+        }).start();
+    }
+
+    public static void  LiburuakAtera(final Activity activity, final PrincipalActivity.LiburuaCallback callback) {
+        // Crear un hilo secundario
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayList<Liburua> liburuak = new ArrayList<>();
+                User user = new User();
+                String sql = "SELECT * FROM liburua";
+                String sql2 = "SELECT * from user where user_id = ?";
+                try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+                     PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                    ResultSet resultSet = preparedStatement.executeQuery();
+
+                    while (resultSet.next()) {
+                        Liburua liburu = new Liburua();
+                        liburu.setLiburuId(resultSet.getInt("liburu_id"));
+                        liburu.setTituloa(resultSet.getString("tituloa"));
+                        liburu.setIdazlea(resultSet.getString("idazlea"));
+                        liburu.setGeneroa(resultSet.getString("generoa"));
+                        liburu.setEgoera(resultSet.getString("egoera"));
+                        liburu.setPrezioa(resultSet.getDouble("prezioa"));
+
+                        int userId = resultSet.getInt("user_id");
+
+                        PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+                        preparedStatement2.setInt(1, userId);
+
+                        ResultSet resultSet2 = preparedStatement2.executeQuery();
+
+                        while (resultSet2.next()) {
+
+                            user.setEmail(resultSet.getString("email"));
+                            user.setErabiltzailea(resultSet.getString("erabiltzailea"));
+                            user.setPasahitza(resultSet.getString("pasahitza"));
+                            user.setIzenaAbizena(resultSet.getString("izena_abizena"));
+                            user.setHelbidea(resultSet.getString("helbidea"));
+                            user.setJaiotzaData(resultSet.getDate("jaiotza_data"));
+                            user.setUserId(resultSet.getInt("user_id"));
+                        }
+
+
+                        liburu.setUser(user);
+
+                        liburuak.add(liburu);
+                        Log.d("MYSQL", "Erabiltzailea aurkitu da: " + user.getErabiltzailea());
+                    }
+                } catch (SQLException e) {
+                    Log.e("MYSQL", "Errorea: " + e.getMessage(), e);
+                }
+
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        callback.onLiburuaLoaded(liburuak); // Aquí se pasa la lista de libros al callback
+                    }
+                });
+            }
+        }).start(); // Inicia el hilo
     }
 
 
