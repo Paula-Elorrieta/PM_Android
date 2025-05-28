@@ -1,30 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:clickable="true"
-    android:foreground="?attr/selectableItemBackground"
-    android:layout_gravity="center">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="120dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <!-- Imagen -->
         <ImageView
-            android:id="@+id/menuIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
 
-        <TextView
-            android:id="@+id/menuTitle"
-            android:layout_width="wrap_content"
+        <!-- Info -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Título"
-            android:textSize="16sp"
-            android:paddingTop="8dp" />
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/productTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Título del libro"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/productEgoera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="berria"
+                android:textColor="#777"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/productUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Erabiltzaile Izena"
+                android:textColor="@color/material_dynamic_neutral20"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/Price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12.99 €"
+                android:textColor="@android:color/holo_green_dark"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

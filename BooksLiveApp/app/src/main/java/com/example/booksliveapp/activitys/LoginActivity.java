@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResult(boolean exists) {
                     LoginActivity.this.exists = exists;
                     if (exists) {
+
                         Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
                         startActivity(intent);
                         finish();

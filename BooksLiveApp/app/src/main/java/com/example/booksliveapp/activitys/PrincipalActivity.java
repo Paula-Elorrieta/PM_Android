@@ -2,29 +2,25 @@ package com.example.booksliveapp.activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.Toolbar;
+import androidx.annotation.NonNull;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.booksliveapp.DB.mysql;
 import com.example.booksliveapp.LibrosAdapter;
 import com.example.booksliveapp.R;
 import com.example.booksliveapp.modelo.Liburua;
-
-import java.security.Principal;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
 public class PrincipalActivity extends AppCompatActivity implements LibrosAdapter.OnItemClickListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +28,9 @@ public class PrincipalActivity extends AppCompatActivity implements LibrosAdapte
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_principal);
 
-        Button logoutButton = findViewById(R.id.buttonItzuli);
 
-        logoutButton.setOnClickListener(v -> {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+
 
         ArrayList<String> liburuak = new ArrayList<>();
 
@@ -46,34 +38,39 @@ public class PrincipalActivity extends AppCompatActivity implements LibrosAdapte
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 columnas
         mysql.LiburuakAtera(this, new LiburuaCallback() {
             @Override
-            public void onLiburuaLoaded(ArrayList<Liburua> liburuak) {
-                for (Liburua libro : liburuak) {
-                    liburuak.add(libro);
-                }
-
-                LibrosAdapter adapter = new LibrosAdapter(liburuak, PrincipalActivity.this);
+            public void onLiburuaLoaded(ArrayList<Liburua> liburuLista) {
+                LibrosAdapter adapter = new LibrosAdapter(liburuLista, PrincipalActivity.this);
                 recyclerView.setAdapter(adapter);
             }
         });
 
-        Toolbar toolbar = findViewById(R.id.toolbarMenu);
-        setSupportActionBar(toolbar);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
 
+                if (id == R.id.nav_libros) {
+                    // acción
+                } else if (id == R.id.nav_resenak) {
+                    // acción
+                }else if (id == R.id.nav_notifications) {
+                    Intent intent = new Intent(PrincipalActivity.this, NotifiActivity.class);
+                    startActivity(intent);
+                } else if (id == R.id.nav_profile) {
+                }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+                return false;
+            }
         });
     }
 
-
     @Override
-    public void onItemClick(String item) {
-        // Handle item click
-//        Intent intent = new Intent(this, LiburuaActivity.class);
-//        intent.putExtra("liburua", item);
-//        startActivity(intent);
+    public void onItemClick(Liburua libros) {
+        Intent intent = new Intent(this, ErosiActivity.class);
+        intent.putExtra("liburua", libros);
+        intent.putExtra("user", libros.getUser());
+        startActivity(intent);
+        Toast.makeText(this, "Liburua hautatu: " + libros.getTituloa(), Toast.LENGTH_SHORT).show();
     }
 
     public interface LiburuaCallback {

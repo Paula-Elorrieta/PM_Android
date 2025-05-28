@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_libros"
+        android:icon="@drawable/ic_libros"
+        android:title="Liburuak" />
+    <item
+        android:id="@+id/nav_resenak"
+        android:icon="@drawable/ic_review"
+        android:title="Resenak" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="Profila" />
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="Bilatu" />
+
+    <item
+        android:id="@+id/nav_notifications"
+        android:icon="@drawable/notificacion"
+        android:title="Jakinarazpenak" />
+
+</menu>

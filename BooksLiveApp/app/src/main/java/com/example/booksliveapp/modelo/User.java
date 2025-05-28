@@ -1,8 +1,13 @@
 package com.example.booksliveapp.modelo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
-public class User {
+public class User  implements Parcelable {
     private int userId;
     private String izenaAbizena;
     private String email;
@@ -24,6 +29,27 @@ public class User {
     public User() {
 
     }
+
+    protected User(Parcel in) {
+        userId = in.readInt();
+        izenaAbizena = in.readString();
+        email = in.readString();
+        pasahitza = in.readString();
+        erabiltzailea = in.readString();
+        helbidea = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public int getUserId() {
         return userId;
@@ -79,5 +105,20 @@ public class User {
 
     public void setHelbidea(String helbidea) {
         this.helbidea = helbidea;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeInt(userId);
+        dest.writeString(izenaAbizena);
+        dest.writeString(email);
+        dest.writeString(pasahitza);
+        dest.writeString(erabiltzailea);
+        dest.writeString(helbidea);
     }
 }
